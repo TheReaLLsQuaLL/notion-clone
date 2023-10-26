@@ -1,8 +1,14 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useConvexAuth } from "convex/react";
+import Link from "next/link";
+import Spinner from "@/components/spinner";
+import { SignIn, SignInButton } from "@clerk/nextjs";
 
 export default function Heading() {
+  const { isAuthenticated, isLoading } = useConvexAuth();
+
   return (
     <div className="max-w-3xl space-y-4">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold ">
@@ -13,9 +19,25 @@ export default function Heading() {
         Notion-Clone is the connected workplace where <br />
         better, faster work happens.
       </h3>
-      <Button>
-        Enter Notion-Clone <ArrowRight className="h-4 w-4 ml-2" />
-      </Button>
+      {isLoading && (
+        <div className="w-full flex items-center justify-center">
+          <Spinner size="lg" />
+        </div>
+      )}
+      {isAuthenticated && !isLoading && (
+        <Button asChild>
+          <Link href="/documents">
+            Enter Notion-Clone <ArrowRight className="h-4 w-4 ml-2" />
+          </Link>
+        </Button>
+      )}
+      {!isAuthenticated && !isLoading && (
+        <SignInButton mode="modal">
+          <Button>
+            Get Notion-Clone Free <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+        </SignInButton>
+      )}
     </div>
   );
 }

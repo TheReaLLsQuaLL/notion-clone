@@ -1,8 +1,9 @@
 "use client";
 
 import useScrollTop from "@/hooks/use-scroll-top";
-import { SignInButton } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 import { useConvexAuth } from "convex/react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import React from "react";
 import Logo from "./logo";
@@ -33,6 +34,14 @@ export default function Navbar() {
             <SignInButton mode="modal">
               <Button size="sm">Get Notion-Clone Free</Button>
             </SignInButton>
+          </>
+        )}
+        {isAuthenticated && !isLoading && (
+          <>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/documents">Enter Notion-Clone</Link>
+            </Button>
+            <UserButton afterSignOutUrl="/" />
           </>
         )}
         <ModeToggle />
