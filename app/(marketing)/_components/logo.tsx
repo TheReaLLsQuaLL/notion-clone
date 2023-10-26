@@ -9,8 +9,21 @@ const font = Poppins({
 
 export default function Logo() {
   return (
-    <div className="hidden md:flex items-center gap-x-2">
-      <Image src="/favicon_light.ico" height="40" width="40" alt="Logo" />
+    <div className="hidden md:flex items-center gap-x-2 ">
+      <Image
+        src="/favicon_light.ico"
+        height="40"
+        width="40"
+        alt="Logo"
+        className="dark:hidden"
+      />
+      <Image
+        src="/favicon_dark.ico"
+        height="40"
+        width="40"
+        alt="Logo"
+        className="hidden dark:blockf"
+      />
       <p className={cn("font-semibold", font.className)}>Notion</p>
     </div>
   );
