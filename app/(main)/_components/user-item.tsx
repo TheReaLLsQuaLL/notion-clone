@@ -1,6 +1,6 @@
 "use client";
 import { ChevronsLeftRight } from "lucide-react";
-import { useUser, useClerk } from "@clerk/nextjs";
+import { useUser, useClerk, SignOutButton } from "@clerk/nextjs";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -16,6 +16,7 @@ export default function UserItem() {
   const { user } = useUser();
   const { isAuthenticated } = useConvexAuth();
   const { signOut } = useClerk();
+
   return (
     <>
       {isAuthenticated && (
