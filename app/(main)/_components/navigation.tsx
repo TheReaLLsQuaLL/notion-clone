@@ -3,6 +3,7 @@
 import {
   ChevronsLeft,
   MenuIcon,
+  Plus,
   PlusCircle,
   Search,
   Settings,
@@ -140,6 +141,7 @@ export default function Navigation() {
         <div className="mt-4">
           {" "}
           <DocumentList />
+          <Item onClick={handleCreate} icon={Plus} label="Add Page" />
         </div>
         <div
           onMouseDown={handleMouseDown}
