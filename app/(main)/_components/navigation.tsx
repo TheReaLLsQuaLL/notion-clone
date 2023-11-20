@@ -8,7 +8,14 @@ import {
   Search,
   Settings,
   Settings2,
+  Trash,
+  Trash2,
 } from "lucide-react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -142,6 +149,17 @@ export default function Navigation() {
           {" "}
           <DocumentList />
           <Item onClick={handleCreate} icon={Plus} label="Add Page" />
+          <Popover>
+            <PopoverTrigger className="w-full mt-4">
+              <Item icon={Trash2} label="Trash" />
+            </PopoverTrigger>
+            <PopoverContent
+              side={isMobile ? "bottom" : "right"}
+              className="p-0 w-72"
+            >
+              <p>Trash Box</p>
+            </PopoverContent>
+          </Popover>
         </div>
         <div
           onMouseDown={handleMouseDown}
