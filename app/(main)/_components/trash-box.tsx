@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { Id } from "@/convex/_generated/dataModel";
 import { toast } from "sonner";
 import Spinner from "@/components/spinner";
-import { Search, Undo } from "lucide-react";
+import { Search, Trash2, Undo } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 export default function TrashBox() {
@@ -87,6 +87,12 @@ export default function TrashBox() {
                 className="rounded-sm p-2 hover:bg-neutral-200"
               >
                 <Undo className="h-4 w-4 text-muted-foreground" />
+              </div>
+              <div
+                role="button"
+                className="rounded-sm p-2 hover:bg-neutral-200"
+              >
+                <Trash2 className="h-4 w-4 text-muted-foreground" />
               </div>
             </div>
           </div>
